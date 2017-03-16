@@ -6,3 +6,8 @@ Modify colors and location focus area to create a unique logo for each edition o
 
 * Dot size
 * Color options
+
+## TODO
+
+* Focus area on dot click
+* Create a unique link when styles are changed (similar to [colors.co](https://coolors.co/d7dedc-cfcfcd-9a879d-7a3b69-563440))
