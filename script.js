@@ -5,6 +5,7 @@
     console.log($(this).val());
     if($(this).val() != ''){
       $('.base').attr( 'fill', $(this).val() );
+      // TODO: When value is changed (either .hex or .picker) update the other one
     }
   });
 
@@ -12,6 +13,7 @@
     console.log($(this).val());
     if($(this).val() != ''){
       $('.dot').attr( 'fill', $(this).val() );
+      // TODO: When value is changed (either .hex or .picker) update the other one
     }
   });
 
@@ -19,6 +21,7 @@
     console.log($(this).val());
     if($(this).val() != ''){
       $('.wordpress-logo').attr( 'fill', $(this).val() );
+      // TODO: When value is changed (either .hex or .picker) update the other one
     }
   });
 
@@ -26,6 +29,7 @@
     console.log($(this).val());
     if($(this).val() != ''){
       $('.wordpress-logo-background').attr( 'fill', $(this).val() );
+      // TODO: When value is changed (either .hex or .picker) update the other one
     }
   });
 
@@ -34,23 +38,10 @@
     if($(this).val() != ''){
       $('.preview').attr( 'style', 'background:' + $(this).val() );
       $('.preview svg').attr( 'style', 'background:' + $(this).val() );
+      // TODO: When value is changed (either .hex or .picker) update the other one
     }
   });
 
-  /*
-   * Dot focus
-   *
-   * Cycle through available dot sizes
-   * Example http://jsfiddle.net/jBJ3B/
-   */
-
-  var dotSizeArray = ["12", "18", "28"];
-  var dotIndex = 0;
-
-  $('.dot').on('click', function nextSize(){
-    $(this).attr( 'r', + dotSizeArray[dotIndex] );
-    dotIndex = (dotIndex + 1) % (dotSizeArray.length);
-  })
 
   /*
    * Save as SVG
@@ -81,5 +72,32 @@
   document.querySelector('.button-download').addEventListener('click', function () {
     triggerDownload();
   });
+
+
+  /*
+   * Dot focus
+   *
+   * Cycle through available dot sizes
+   * Example http://jsfiddle.net/jBJ3B/
+   */
+
+  // Experimenting, feel free to delete :)
+  // var dotSizeArray = ["12", "18", "28"];
+  // var dotIndex = 0;
+
+  // $('.dot').on('click', function nextSize(){
+  //   $(this).attr( 'r', + dotSizeArray[dotIndex] );
+  //   dotIndex = (dotIndex + 1) % (dotSizeArray.length);
+  // })
+
+  /*
+   * TODO: Focus area
+   * Steps to generate the focus area
+   * 1) Make the clicked .dot largest (level 0), update radius value to r="28", and fill-opacity="1"
+   * 2) Duplicate the clicked .dot in place, with the radius value r="9" and match the fill value with the one from .base
+   * 3) Relative to clicked .dot, make the top/right/bottom/left neighbouring .dot (level 1) r="18"
+   * 4) Relative to level 1 .dot, make the top/right/bottom/left neighbouring .dot (level 2) r="12" (but make sure that level 0/1 .dots remain unchanged)
+   */
+
 
 }(jQuery));
