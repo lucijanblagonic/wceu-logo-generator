@@ -2,10 +2,19 @@
 
 Modify colors and location focus area to create a unique logo for each edition of WordCamp Europe.
 
+⭐️⭐️⭐️ [Preview](https://lucijanblagonic.github.io/wceu-logo-generator/) ⭐️⭐️⭐️
+
 ## Brand Guidelines [Coming soon]
 
-* Dot size
-* Color options
+* Dot size (small r=5, medium r=7, large r=9)
+* Color options (90% opacity)
+
+## Focus area specs
+
+* Centered dot: r=28, 100% opacity (Location).
+* Duplicated centered dot: r=9 (Location)
+* 1st level neighbouring top/left/right/bottom dots: r=18 (Medium size)
+* 2nd level neighbour dots (relative to 1st level): r=12 (Small size)
 
 ## TODO
 
