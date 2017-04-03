@@ -38,6 +38,14 @@ label {
 
 }
 
+input[type="button"] {
+
+  background-color: #C20114;
+  color: #eee;
+  border: none;
+
+}
+
 input[type="text"] {
 
   display: block;

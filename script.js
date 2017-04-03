@@ -33,6 +33,7 @@
     console.log($(this).val());
     if($(this).val() != ''){
       $('.preview').attr( 'style', 'background:' + $(this).val() );
+      $('.preview svg').attr( 'style', 'background:' + $(this).val() );
     }
   });
 
@@ -50,5 +51,35 @@
     $(this).attr( 'r', + dotSizeArray[dotIndex] );
     dotIndex = (dotIndex + 1) % (dotSizeArray.length);
   })
+
+  /*
+   * Save as SVG
+   *
+   * Based on this http://stackoverflow.com/a/28087280/7809192
+   */
+
+  function toBase64 (str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
+  }
+
+  function triggerDownload () {
+    var html = 'data:text/attachment;base64,' + toBase64(document.querySelector('.preview').innerHTML);
+    var evt = new MouseEvent('click', {
+      view: window,
+      bubbles: false,
+      cancelable: true
+    });
+
+    var a = document.createElement('a');
+    a.setAttribute('download', 'logo.svg');
+    a.setAttribute('href', html);
+    a.setAttribute('target', '_blank');
+
+    a.dispatchEvent(evt);
+  }
+
+  document.querySelector('.button-download').addEventListener('click', function () {
+    triggerDownload();
+  });
 
 }(jQuery));
