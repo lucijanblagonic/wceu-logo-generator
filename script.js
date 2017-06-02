@@ -99,5 +99,4 @@
    * 4) Relative to level 1 .dot, make the top/right/bottom/left neighbouring .dot (level 2) r="12" (but make sure that level 0/1 .dots remain unchanged)
    */
 
-
 }(jQuery));
