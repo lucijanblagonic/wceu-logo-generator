@@ -11,12 +11,12 @@
 
  .event__title {
 
+   color: #E7AB46;
    font-size: 3em;
    line-height: 1.25;
    text-transform: uppercase;
-   color: #E7AB46;
-
-   font-family: mostra-nuova-alt-d, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+   font-weight: 700;
+   font-family: "mostra-nuova-alt-d", sans-serif;
 
    margin: 0;
 
@@ -24,9 +24,10 @@
 
  .event__meta {
 
+   color: rgba(255,255,255,.8);
    font-size: 1.5em;
    line-height: 1.5;
-   color: rgba(255,255,255,.8);
+   font-family: "ingra", sans-serif;
 
    margin-top: .25em;
    margin-bottom: 0;
