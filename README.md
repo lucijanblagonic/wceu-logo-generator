@@ -26,3 +26,5 @@ Modify colors and location focus area to create a unique logo for each edition o
 ## Nice to have
 
 * Create a unique link when styles are changed (similar to [colors.co](https://coolors.co/d7dedc-cfcfcd-9a879d-7a3b69-563440))
+* Add editable title and tagline
+* Change fonts of the title/tagline via Google Fonts
