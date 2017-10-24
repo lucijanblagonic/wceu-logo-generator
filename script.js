@@ -99,4 +99,44 @@
    * 4) Relative to level 1 .dot, make the top/right/bottom/left neighbouring .dot (level 2) r="12" (but make sure that level 0/1 .dots remain unchanged)
    */
 
+   var $dot = $('.dot');
+
+   $dot.on('click', function(event) {
+    // console.log(event);
+    // Changes fill of currently clicked element
+    // event.currentTarget.attributes.fill.value = 'red';
+
+    // var attrs = SVG._getAttrs(event.currentTarget);
+    console.log('event: ', event);
+
+    SVG._setFill(event);
+    // Gets current clicked element attributes
+    // console.log('Attributes: ', event.currentTarget.attributes);
+   });
+
+
+
+  // Small module named 'SVG' for any kind of svg element manipulation
+  // Created following a 'Module Pattern'
+   var SVG = (function(clickedElement, cityCursor) {
+      return {
+
+        // Returns currently passed element svg attributes
+        _getAttrs: function(clickedElement) {
+          return clickedElement.currentTarget.attributes;
+        },
+
+        // Changes currently passed element fill value,
+        // with passed color
+        _setFill: function(clickedElement, fillValue) {
+          clickedElement.currentTarget.attributes.fill.value = 'red';
+        },
+
+        // _getParent: function(clickedElement) {
+        //   clickedElement.
+        // }
+
+      }
+   })();
+
 }(jQuery));
