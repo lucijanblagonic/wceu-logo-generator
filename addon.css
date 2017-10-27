@@ -131,6 +131,7 @@
 
  .dot {
    animation: hideshow 3s ease infinite;
+   cursor: pointer;
  }
 
  .dot:nth-child(2n+1) { animation-delay: .1s;  }

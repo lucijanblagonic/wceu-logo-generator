@@ -102,22 +102,19 @@
    var $dot = $('.dot');
 
    $dot.on('click', function(event) {
-    // console.log(event);
-    // Changes fill of currently clicked element
-    // event.currentTarget.attributes.fill.value = 'red';
+    // Select marker element from DOM
+    var $marker = document.querySelector('.marker');
 
-    // var attrs = SVG._getAttrs(event.currentTarget);
-    console.log('event: ', event);
+    // Retrive transform property value of clicked element
+    var transform = SVG._getTransform(event);
 
-    SVG._setFill(event);
-    // Gets current clicked element attributes
-    // console.log('Attributes: ', event.currentTarget.attributes);
+    // Setting transform values for marker
+    $marker.setAttribute('transform', transform);
    });
 
 
 
   // Small module named 'SVG' for any kind of svg element manipulation
-  // Created following a 'Module Pattern'
    var SVG = (function(clickedElement, cityCursor) {
       return {
 
@@ -126,15 +123,16 @@
           return clickedElement.currentTarget.attributes;
         },
 
+        // Returns transform value of clicked element
+        _getTransform: function(clickedElement) {
+          return clickedElement.currentTarget.attributes.transform.value;
+        },
+
         // Changes currently passed element fill value,
         // with passed color
         _setFill: function(clickedElement, fillValue) {
           clickedElement.currentTarget.attributes.fill.value = 'red';
-        },
-
-        // _getParent: function(clickedElement) {
-        //   clickedElement.
-        // }
+        }
 
       }
    })();
