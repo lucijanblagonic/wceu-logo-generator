@@ -103,13 +103,13 @@
 
    $dot.on('click', function(event) {
     // Select marker element from DOM
-    var $marker = document.querySelector('.marker');
+    // var $marker = document.querySelector('.marker');
 
     // Retrive transform property value of clicked element
-    var transform = SVG._getTransform(event);
+    // var transform = SVG._getTransform(event);
 
     // Setting transform values for marker
-    $marker.setAttribute('transform', transform);
+    // $marker.setAttribute('transform', transform);
    });
 
 
