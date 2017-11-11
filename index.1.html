@@ -92,7 +92,15 @@
           </title>
           <defs>
             <circle id="a" cx="180" cy="180" r="180" />
-            
+            <symbol id="circle-small">
+              <circle class="dot" cx="12" cy="12" r="5" />
+            </symbol>
+            <symbol id="circle-medium">
+              <circle class="dot" cx="12" cy="12" r="7" />
+            </symbol>
+            <symbol id="circle-large">
+              <circle class="dot" cx="12" cy="12" r="9" />
+            </symbol>
           </defs>
           <g fill="none" fill-rule="evenodd">
             <g id="background">
@@ -102,10 +110,7 @@
               <mask id="b" fill="#FFF">
                 <use xlink:href="#a" />
               </mask>
-              <g class="world">
-
-              </g>
-              <g mask="url(#b)">
+              <!-- <g mask="url(#b)">
                 <circle class="dot dot-m" fill="#222" fill-opacity=".9" cx="12" cy="12" r="7"  transform="translate(72 48)"/>
                 <circle class="dot dot-l" fill="#222" fill-opacity=".9" cx="12" cy="12" r="9"  transform="translate(192 72)"/>
                 <circle class="dot dot-s" fill="#222" fill-opacity=".9" cx="12" cy="12" r="5"  transform="translate(216 72)"/>
@@ -201,6 +206,116 @@
                 <circle class="dot dot-l" fill="#222" fill-opacity=".9" cx="12" cy="12" r="9"  transform="translate(48 264)"/>
                 <circle class="dot dot-l" fill="#222" fill-opacity=".9" cx="12" cy="12" r="9"  transform="translate(72 264)"/>
                 <circle class="dot dot-s" fill="#222" fill-opacity=".9" cx="12" cy="12" r="5"  transform="translate(96 264)"/>
+              </g> -->
+              <g class="world" mask="url(#b)">
+                <!-- 1st row -->
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="240" y="24" />
+                <!-- 2nd row -->
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="72" y="48" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="216" y="48" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="48" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="264" y="48" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="288" y="48" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="312" y="48" />
+                <!-- 3rd row -->
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="192" y="72" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="216" y="72" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="72" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="264" y="72" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="288" y="72" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="312" y="72" />
+                <!-- 4th row -->
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="96" y="96" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="168" y="96" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="192" y="96" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="96" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="264" y="96" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="288" y="96" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="312" y="96" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="336" y="96" />
+                <!-- 5th row -->
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="96" y="120" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="168" y="120" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="192" y="120" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="240" y="120" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="264" y="120" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="288" y="120" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="312" y="120" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="336" y="120" />
+                <!-- 6th row -->
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="72" y="144" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="96" y="144" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="168" y="144" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="192" y="144" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="216" y="144" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="144" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="264" y="144" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="288" y="144" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="312" y="144" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="336" y="144" />
+                <!-- 7th row -->
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="144" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="168" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="192" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="216" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="264" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="288" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="312" y="168" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="336" y="168" />
+                <!-- 8th row -->
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="96" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="120" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="144" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="168" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="192" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="216" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="264" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="288" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="312" y="192" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="336" y="192" />
+                <!-- 9th row -->
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="48" y="216" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="96" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="120" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="144" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="168" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="192" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="216" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="264" y="216" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="288" y="216" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="312" y="216" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="336" y="216" />
+                <!-- 10th row -->
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="48" y="240" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="72" y="240" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="96" y="240" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="120" y="240" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="144" y="240" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="168" y="240" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="192" y="240" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="216" y="240" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="240" y="240" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="264" y="240" />
+                <!-- 11th row -->
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="48" y="264" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="72" y="264" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="96" y="264" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="144" y="264" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="168" y="264" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="216" y="264" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="240" y="264" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="264" y="264" />
+                <!-- 12th row -->
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="168" y="288" />
+                <use xlink:href="#circle-large" fill="#222" fill-opacity=".9" x="216" y="288" />
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="240" y="288" />
+                <!-- 13th row -->
+                <use xlink:href="#circle-medium" fill="#222" fill-opacity=".9" x="144" y="312" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="168" y="312" />
+                <use xlink:href="#circle-small" fill="#222" fill-opacity=".9" x="240" y="312" />
               </g>
             </g>
             <g id="logo" transform="translate(240 0)">
