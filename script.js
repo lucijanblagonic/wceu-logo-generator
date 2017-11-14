@@ -102,14 +102,22 @@
    var $dot = $('.dot');
 
    $dot.on('click', function(event) {
-    // Select marker element from DOM
-    // var $marker = document.querySelector('.marker');
 
-    // Retrive transform property value of clicked element
-    // var transform = SVG._getTransform(event);
-
-    // Setting transform values for marker
-    // $marker.setAttribute('transform', transform);
+    // Retrive transform property value of clicked element    
+    var transform = SVG._getTransform(event);
+    // Extract X and Y cords
+    var x = SVG._getXCord(transform),
+        y = SVG._getYCord(transform);
+    // Prev in line
+    SVG._previuosPins(x, y);
+    // // Next in line
+    SVG._nextPins(x, y);
+    // // Prev on top
+    SVG._topPins(x, y);
+    // // Next on bottom
+    SVG._bottomPins(x, y);
+    // Create center pin
+    SVG._createCenter('.world', x, y);
    });
 
 
@@ -118,20 +126,92 @@
    var SVG = (function(clickedElement, cityCursor) {
       return {
 
-        // Returns currently passed element svg attributes
-        _getAttrs: function(clickedElement) {
-          return clickedElement.currentTarget.attributes;
-        },
-
         // Returns transform value of clicked element
         _getTransform: function(clickedElement) {
           return clickedElement.currentTarget.attributes.transform.value;
         },
 
-        // Changes currently passed element fill value,
-        // with passed color
-        _setFill: function(clickedElement, fillValue) {
-          clickedElement.currentTarget.attributes.fill.value = 'red';
+        // Extracts X cordinate from passed value
+        _getXCord: function( transformValue ) {
+          if( transformValue ) {
+            return parseInt(transformValue.slice(transformValue.indexOf('(') + 1, transformValue.indexOf(' ')));
+          }
+        },
+
+        // Extracts Y cordinate from passed value
+        _getYCord: function( transformValue ) {
+          if( transformValue ) {
+            return parseInt(transformValue.slice(transformValue.indexOf(' ') + 1, transformValue.indexOf(')')));
+          }
+        },
+
+        // Creates row on top
+        _topPins: function( x, y ) {
+          if( x && y ) {
+            var topLeftSibling      = document.querySelector('[transform="translate(' + ( x - 24 ) + ' ' + ( y - 24 ) + ')"]'),
+                topMiddleSibling    = document.querySelector('[transform="translate(' + x + ' ' + ( y - 24 ) + ')"]'),
+                topMiddleSiblingFar = document.querySelector('[transform="translate(' + x + ' ' + ( y - 48 ) + ')"]'),
+                topRightSibling     = document.querySelector('[transform="translate(' + ( x + 24 ) + ' ' + ( y - 24 ) + ')"]');
+            if( topMiddleSibling ) { topMiddleSibling.style.r = 18; }
+            if( topMiddleSibling && topMiddleSiblingFar ) { topMiddleSiblingFar.style.r = 12; }
+            if( topMiddleSibling && topLeftSibling ) { topLeftSibling.style.r = 12; }
+            if( topMiddleSibling && topRightSibling ) { topRightSibling.style.r = 12; }
+          }
+        },
+
+        // Creates two previous circles
+        _previuosPins: function( x, y ) {
+          if( x && y ) {
+            var nearSibling = document.querySelector('[transform="translate(' + ( x - 24 ) + ' ' + y + ')"]'),
+                farSibling  = document.querySelector('[transform="translate(' + ( x - 48 ) + ' ' + y + ')"]');
+            if( nearSibling ) { nearSibling.style.r = 18; }
+            if( nearSibling && farSibling ) { farSibling.style.r = 12; }
+          }
+        },
+
+        // Creates two next circles
+        _nextPins: function( x, y ) {
+          if( x && y ) {
+            var nearSibling = document.querySelector('[transform="translate(' + ( x + 24 ) + ' ' + y + ')"]'),
+                farSibling  = document.querySelector('[transform="translate(' + ( x + 48 ) + ' ' + y + ')"]');
+            if( nearSibling ) { nearSibling.style.r = 18; }
+            if( nearSibling && farSibling ) { farSibling.style.r = 12; }
+          }
+        },
+
+        // Creates row on bottom
+        _bottomPins: function( x, y ) {
+          if( x && y ) {
+            var bottomLeftSibling      = document.querySelector('[transform="translate(' + ( x - 24 ) + ' ' + ( y + 24 ) + ')"]'),
+                bottomMiddleSibling    = document.querySelector('[transform="translate(' + x + ' ' + ( y + 24 ) + ')"]'),
+                bottomMiddleSiblingFar = document.querySelector('[transform="translate(' + x + ' ' + ( y + 48 ) + ')"]'),
+                bottomRightSibling     = document.querySelector('[transform="translate(' + ( x + 24 ) + ' ' + ( y + 24 ) + ')"]');
+            if( bottomMiddleSibling ) { bottomMiddleSibling.style.r = 18; }
+            if( bottomMiddleSibling && bottomMiddleSiblingFar ) { bottomMiddleSiblingFar.style.r = 12; }
+            if( bottomMiddleSibling && bottomLeftSibling ) { bottomLeftSibling.style.r = 12; }
+            if( bottomMiddleSibling && bottomRightSibling ) { bottomRightSibling.style.r = 12; }
+          }
+        },
+
+        // Create center pins
+        _createCenter: function( svgRootEl, x, y ) {
+          var root = document.querySelector(svgRootEl);
+          var largeCircle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+          largeCircle.setAttribute('fill', '#222');
+          largeCircle.setAttribute('class', 'dot');
+          largeCircle.setAttribute('cx', 12);
+          largeCircle.setAttribute('cy', 12);
+          largeCircle.setAttribute('r', 28);
+          largeCircle.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
+          var smallCircle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+          smallCircle.setAttribute('cx', 12);
+          smallCircle.setAttribute('cy', 12);
+          smallCircle.setAttribute('r', 9);
+          smallCircle.setAttribute('fill', '#ddd');
+          largeCircle.setAttribute('class', 'base');
+          smallCircle.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
+          root.appendChild(largeCircle);
+          root.appendChild(smallCircle);
         }
 
       }
