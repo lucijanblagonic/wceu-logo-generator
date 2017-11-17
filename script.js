@@ -208,7 +208,7 @@
           smallCircle.setAttribute('cy', 12);
           smallCircle.setAttribute('r', 9);
           smallCircle.setAttribute('fill', '#ddd');
-          largeCircle.setAttribute('class', 'base');
+          largeCircle.setAttribute('class', 'dot');
           smallCircle.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
           root.appendChild(largeCircle);
           root.appendChild(smallCircle);
