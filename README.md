@@ -18,7 +18,7 @@ Modify colors and location focus area to create a unique logo for each edition o
 
 ## TODO
 
-* Focus area on dot click
+* ~~Focus area on dot click~~
 * ~~Button downloads the logo as an SVG file (targets the SVG element)~~
 * Link/update input values on change (type="color" and type="text")
 * Add color randomize option
