@@ -210,6 +210,7 @@
           smallCircle.setAttribute('fill', '#ddd');
           largeCircle.setAttribute('class', 'dot');
           smallCircle.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
+          smallCircle.setAttribute('class', 'base');
           root.appendChild(largeCircle);
           root.appendChild(smallCircle);
         }
