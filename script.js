@@ -104,6 +104,7 @@
   var $resetMarkerBtn = $('.button-markerReset');
 
   $dot.on('click', function(event) {
+    console.log($('#select-color-dots').val());
     if(markerExist === false) {
       createMarker(event);
       markerExist = true;
@@ -237,7 +238,7 @@
       _createCenter: function( svgRootEl, x, y ) {
         var root = document.querySelector(svgRootEl);
         var largeCircle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
-        largeCircle.setAttribute('fill', '#222');
+        largeCircle.setAttribute('fill', $('#select-color-dots').val());
         largeCircle.setAttribute('class', 'dot');
         largeCircle.setAttribute('cx', 12);
         largeCircle.setAttribute('cy', 12);
@@ -248,7 +249,7 @@
         smallCircle.setAttribute('cx', 12);
         smallCircle.setAttribute('cy', 12);
         smallCircle.setAttribute('r', 9);
-        smallCircle.setAttribute('fill', '#ddd');
+        smallCircle.setAttribute('fill', $('#select-color-base').val());
         smallCircle.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
         smallCircle.setAttribute('class', 'base base--small');
         root.appendChild(largeCircle);
