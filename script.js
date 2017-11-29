@@ -101,15 +101,23 @@
 
   var $dot = $('.dot');
   var markerExist = false;
+  var $resetMarkerBtn = $('.button-markerReset');
 
   $dot.on('click', function(event) {
     if(markerExist === false) {
       createMarker(event);
       markerExist = true;
+      $resetMarkerBtn.prop('disabled', false);
     } else {
       resetMap();
       createMarker(event);
     }
+  });
+
+  $resetMarkerBtn.on('click', function() {
+    markerExist = false;
+    $resetMarkerBtn.prop('disabled', true);
+    resetMap();
   });
 
 
