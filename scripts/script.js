@@ -69,9 +69,22 @@
     a.dispatchEvent(evt);
   }
 
-  document.querySelector('.button-download').addEventListener('click', function () {
+  document.querySelector('.button-download.svg').addEventListener('click', function () {
     triggerDownload();
   });
+
+
+  var asPng = $('.button-download.png');
+  var svgNode = $('#svgLogo');
+
+  /**
+   * Saves svg element as png image
+   * ( uses saveSvgAsPng library )
+  */
+  asPng.on('click', function() {
+    saveSvgAsPng(document.getElementById('svgLogo'), "wceu2018logo.png", { encoderOptions: 1 });
+  });
+  
 
 
   /*
