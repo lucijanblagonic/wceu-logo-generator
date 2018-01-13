@@ -33,7 +33,7 @@
             <label class="field__label" for="select-color-base">Base Color</label>
             <div class="field__group">
               <input type="color" class="input-color-base picker" id="select-color-base" pattern="#[a-f0-9]{6}" value="#DDDDDD">
-              <input type="text" class="input-color-base hex" value="#DDDDDD">
+              <input type="text"  class="input-color-base hex" value="#DDDDDD">
             </div>
           </div>
 
@@ -84,6 +84,8 @@
               <input class="button-markerReset" type="button" value="Remove Marker" disabled="disabled">
             </div>
           </div>
+          <button class="pushstate" role="button">Pushstate</button>
+
         </fieldset>
 
       </form>
@@ -246,6 +248,17 @@
 
 <script src="scripts/saveSvgAsPng.js"></script>
 <script src="scripts/script.js"></script>
+
+<script>
+  $(function() {
+    var btn = $('.pushstate');
+    var stateObj = { bar: 'foo' };
+
+    btn.on('click', function() {
+      history.pushState(stateObj, 'Title', 'proba.html');
+    });
+  });
+</script>
 
 </body>
 </html>

@@ -1,10 +1,11 @@
 (function ( $ ) {
   "use strict";
 
-  $('.input-color-base').on('input', function(){
-    console.log($(this).val());
-    if($(this).val() != ''){
+  $('.input-color-base').on('input', function() {
+    console.log( $(this).val() );
+    if( $(this).val() != '') {
       $('.base').attr( 'fill', $(this).val() );
+      $('.input-color-base').val(this.value);
       // TODO: When value is changed (either .hex or .picker) update the other one
     }
   });
@@ -14,6 +15,7 @@
     if($(this).val() != ''){
       $('.dot').attr( 'fill', $(this).val() );
       // TODO: When value is changed (either .hex or .picker) update the other one
+      $('.input-color-dots').val(this.value);
     }
   });
 
@@ -22,6 +24,7 @@
     if($(this).val() != ''){
       $('.wordpress-logo').attr( 'fill', $(this).val() );
       // TODO: When value is changed (either .hex or .picker) update the other one
+      $('.input-color-wordpress-logo').val(this.value);
     }
   });
 
@@ -30,6 +33,7 @@
     if($(this).val() != ''){
       $('.wordpress-logo-background').attr( 'fill', $(this).val() );
       // TODO: When value is changed (either .hex or .picker) update the other one
+      $('.input-color-wordpress-logo-background').val(this.value);
     }
   });
 
@@ -39,6 +43,7 @@
       $('.preview').attr( 'style', 'background:' + $(this).val() );
       $('.preview svg').attr( 'style', 'background:' + $(this).val() );
       // TODO: When value is changed (either .hex or .picker) update the other one
+      $('.input-color-background').val(this.value);
     }
   });
 
