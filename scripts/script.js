@@ -2,50 +2,61 @@
   "use strict";
 
   $('.input-color-base').on('input', function() {
-    console.log( $(this).val() );
-    if( $(this).val() != '') {
-      $('.base').attr( 'fill', $(this).val() );
-      $('.input-color-base').val(this.value);
-      // TODO: When value is changed (either .hex or .picker) update the other one
-    }
+    syncInputs(
+      $(this).val(),
+      '.input-color-base',
+      '.base',
+      'fill'
+    );
   });
 
   $('.input-color-dots').on('input', function(){
-    console.log($(this).val());
-    if($(this).val() != ''){
-      $('.dot').attr( 'fill', $(this).val() );
-      // TODO: When value is changed (either .hex or .picker) update the other one
-      $('.input-color-dots').val(this.value);
-    }
+    syncInputs(
+      $(this).val(),
+      '.input-color-dots',
+      '.dot',
+      'fill'
+    );
   });
 
-  $('.input-color-wordpress-logo').on('input', function(){
-    console.log($(this).val());
-    if($(this).val() != ''){
-      $('.wordpress-logo').attr( 'fill', $(this).val() );
-      // TODO: When value is changed (either .hex or .picker) update the other one
-      $('.input-color-wordpress-logo').val(this.value);
-    }
+  $('.input-color-wordpress-logo').on('input', function() {
+    syncInputs(
+      $(this).val(),
+      '.input-color-wordpress-logo',
+      '.wordpress-logo',
+      'fill'
+    );
   });
 
   $('.input-color-wordpress-logo-background').on('input', function(){
-    console.log($(this).val());
-    if($(this).val() != ''){
-      $('.wordpress-logo-background').attr( 'fill', $(this).val() );
-      // TODO: When value is changed (either .hex or .picker) update the other one
-      $('.input-color-wordpress-logo-background').val(this.value);
-    }
+    syncInputs(
+      $(this).val(),
+      '.input-color-wordpress-logo-background',
+      '.wordpress-logo-background',
+      'fill'
+    );
   });
 
-  $('.input-color-background').on('input', function(){
-    console.log($(this).val());
-    if($(this).val() != ''){
-      $('.preview').attr( 'style', 'background:' + $(this).val() );
-      $('.preview svg').attr( 'style', 'background:' + $(this).val() );
-      // TODO: When value is changed (either .hex or .picker) update the other one
-      $('.input-color-background').val(this.value);
-    }
+  $('.input-color-background').on('input', function() {
+    syncInputs(
+      $(this).val(),
+      '.input-color-background',
+      '.preview',
+      'style'
+    );
   });
+
+  function syncInputs(value, selector, elToPrev, type) {
+    if( value != '') {
+      if (type === 'fill') {
+        $(elToPrev).attr( 'fill', value );
+      } else {
+        $(elToPrev).attr( 'style', 'background: ' + value );
+        $(elToPrev + ' svg').attr( 'style', 'background: ' + value );
+      }
+      $(selector).val(value);
+    }
+  }
 
 
   /*
