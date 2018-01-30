@@ -1,6 +1,22 @@
 (function ( $ ) {
   "use strict";
 
+  // console.log(urlParams.get('base'));
+  // console.log(urlParams.get('dots'));
+  // console.log(urlParams.get('logo'));
+  // console.log(urlParams.get('logobg'));
+  // console.log(urlParams.get('bg'));
+
+  // var base = urlParams.get('base'),
+  //     dots = urlParams.get('dots'),
+  //     logo = urlParams.get('logo'),
+  //     logoBg = urlParams.get('logobg'),
+  //     bg = urlParams.get('bg');
+
+  // const paramsArr = urlParams.split('&');
+  // console.log('paramsArr: ', paramsArr);
+
+
   $('.input-color-base').on('input', function() {
     syncInputs(
       $(this).val(),
@@ -8,6 +24,7 @@
       '.base',
       'fill'
     );
+    updateUrl('base', $(this).val());
   });
 
   $('.input-color-dots').on('input', function(){
@@ -17,6 +34,7 @@
       '.dot',
       'fill'
     );
+    updateUrl('dots', $(this).val());
   });
 
   $('.input-color-wordpress-logo').on('input', function() {
@@ -26,6 +44,7 @@
       '.wordpress-logo',
       'fill'
     );
+    updateUrl('logoColor', $(this).val());
   });
 
   $('.input-color-wordpress-logo-background').on('input', function(){
@@ -35,6 +54,7 @@
       '.wordpress-logo-background',
       'fill'
     );
+    updateUrl('logoBg', $(this).val());
   });
 
   $('.input-color-background').on('input', function() {
@@ -44,6 +64,7 @@
       '.preview',
       'style'
     );
+    updateUrl('bg', $(this).val());
   });
 
   function syncInputs(value, selector, elToPrev, type) {
@@ -57,6 +78,18 @@
       $(selector).val(value);
     }
   }
+
+
+  /**
+   * URL manipulations with replaceState
+   * on input value change
+   */
+   function updateUrl(paramName, paramValue) {
+    var url = new URL(window.location),
+        urlParams = new URLSearchParams(url.search);
+    urlParams.set( paramName, paramValue.slice(1) );
+    window.history.replaceState({}, '', window.location.pathname + '?' + urlParams);
+   };
 
 
   /*
