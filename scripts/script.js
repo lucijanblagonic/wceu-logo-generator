@@ -1,20 +1,10 @@
 (function ( $ ) {
   "use strict";
 
-  // console.log(urlParams.get('base'));
-  // console.log(urlParams.get('dots'));
-  // console.log(urlParams.get('logo'));
-  // console.log(urlParams.get('logobg'));
-  // console.log(urlParams.get('bg'));
+  var url = new URL(window.location),
+      urlParams = new URLSearchParams(url.search);
 
-  // var base = urlParams.get('base'),
-  //     dots = urlParams.get('dots'),
-  //     logo = urlParams.get('logo'),
-  //     logoBg = urlParams.get('logobg'),
-  //     bg = urlParams.get('bg');
-
-  // const paramsArr = urlParams.split('&');
-  // console.log('paramsArr: ', paramsArr);
+  extractUrl(urlParams);
 
 
   $('.input-color-base').on('input', function() {
@@ -24,7 +14,7 @@
       '.base',
       'fill'
     );
-    updateUrl('base', $(this).val());
+    updateUrl( 'base', $(this).val() );
   });
 
   $('.input-color-dots').on('input', function(){
@@ -90,6 +80,62 @@
     urlParams.set( paramName, paramValue.slice(1) );
     window.history.replaceState({}, '', window.location.pathname + '?' + urlParams);
    };
+
+
+   /**
+   * URL mparams extraction
+   */
+   function extractUrl(params) {
+    if(params !== '') {
+      if (urlParams.has('base')) {
+        var baseParam = '#' + urlParams.get('base');
+        $('.input-color-base').attr( 'value', baseParam );
+        syncInputs(
+          baseParam,
+          '.input-color-base',
+          '.base',
+          'fill'
+        );
+      }
+      if (urlParams.has('dots')) {
+        var dotsParam = '#' + urlParams.get('dots');
+        $('.input-color-dots').attr( 'value', dotsParam );
+        syncInputs(
+          dotsParam,
+          '.input-color-dots',
+          '.dot',
+          'fill'
+        );
+      }
+      if (urlParams.has('logoColor')) {
+        $('.input-color-wordpress-logo').attr( 'value', '#' + urlParams.get('logoColor') );
+        syncInputs(
+          '#' + urlParams.get('logoColor'),
+          '.input-color-wordpress-logo',
+          '.wordpress-logo',
+          'fill'
+        );
+      }
+      if(urlParams.has('logoBg')) {
+        $('.input-color-wordpress-logo-background').attr( 'value', '#' + urlParams.get('logoBg') );
+        syncInputs(
+          '#' + urlParams.get('logoBg'),
+          '.input-color-wordpress-logo-background',
+          '.wordpress-logo-background',
+          'fill'
+        );
+      }
+      if(urlParams.has('bg')) {
+        $('.input-color-background').attr( 'value', '#' + urlParams.get('bg') );
+        syncInputs(
+          '#' + urlParams.get('bg'),
+          '.input-color-background',
+          '.preview',
+          'style'
+        );
+      } 
+    }
+   }
 
 
   /*
