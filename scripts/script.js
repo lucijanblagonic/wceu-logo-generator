@@ -4,7 +4,7 @@
   var url = new URL(window.location),
       urlParams = new URLSearchParams(url.search);
 
-  extractUrl(urlParams);
+  // extractUrl(urlParams);
 
 
   $('.input-color-base').on('input', function() {
@@ -54,7 +54,7 @@
       '.preview',
       'style'
     );
-    updateUrl('bg', $(this).val());
+    updateUrl('appBg', $(this).val());
   });
 
   function syncInputs(value, selector, elToPrev, type) {
@@ -77,13 +77,17 @@
    function updateUrl(paramName, paramValue) {
     var url = new URL(window.location),
         urlParams = new URLSearchParams(url.search);
-    urlParams.set( paramName, paramValue.slice(1) );
+    if (paramName === 'marker') {
+      urlParams.set( paramName, paramValue );
+    } else {
+      urlParams.set( paramName, paramValue.slice(1) );
+    }
     window.history.replaceState({}, '', window.location.pathname + '?' + urlParams);
    };
 
 
    /**
-   * URL mparams extraction
+   * URL params extraction
    */
    function extractUrl(params) {
     if(params !== '') {
@@ -125,14 +129,18 @@
           'fill'
         );
       }
-      if(urlParams.has('bg')) {
-        $('.input-color-background').attr( 'value', '#' + urlParams.get('bg') );
+      if(urlParams.has('appBg')) {
+        $('.input-color-background').attr( 'value', '#' + urlParams.get('appBg') );
         syncInputs(
-          '#' + urlParams.get('bg'),
+          '#' + urlParams.get('appBg'),
           '.input-color-background',
           '.preview',
           'style'
         );
+      } 
+      if(urlParams.has('marker')) {
+        var urlMarker = urlParams.get('marker');
+        createMarker(urlMarker);
       } 
     }
    }
@@ -212,7 +220,6 @@
   var $resetMarkerBtn = $('.button-markerReset');
 
   $dot.on('click', function(event) {
-    console.log($('#select-color-dots').val());
     if(markerExist === false) {
       createMarker(event);
       markerExist = true;
@@ -235,14 +242,16 @@
   */
   function resetMap() {
     $('.world .dot--large').remove();
-    // $('.world .base--small').attr('fill', '#222');
     $('.world .base--small').remove();
-    // $('.world .base--small').attr('fill-opacity', '.9');
     var $dots = $('.world .dot');
     $dots.each(function() {
       var dataR = $(this).data('r');
       $(this).css('r', '');
     });
+    // if(urlParams.has('marker')) {
+      urlParams.delete('marker');
+      window.history.replaceState({}, '', window.location.pathname + '?' + urlParams);
+    // }
   };
 
 
@@ -250,8 +259,19 @@
    * Function for creating marker
   */
   function createMarker(e) {
-    // Retrive transform property value of clicked element    
-    var transform = SVG._getTransform(e);
+    console.log(e);
+    var transform;
+    if (typeof e === 'string') {
+      var left = e.slice(0, e.indexOf('-'));
+      var top = e.slice(e.indexOf('-') + 1);
+      transform = 'transform(' + left + ' ' + top + ')';
+      markerExist = true;
+      $resetMarkerBtn.prop('disabled', false);
+    } else {
+      // Retrive transform property value of clicked element    
+      transform = SVG._getTransform(e);
+    }
+    extractTransform(transform);
     // Extract X and Y cords
     var x = SVG._getXCord(transform),
         y = SVG._getYCord(transform);
@@ -265,6 +285,17 @@
     SVG._bottomPins(x, y);
     // Create center pin
     SVG._createCenter('.world', x, y);
+  };
+
+  /**
+   * Extracts transform values from attrs
+   * and sets marker as URL param
+   */ 
+  function extractTransform(transformValue) {
+    let left = transformValue.slice(transformValue.indexOf('(') + 1, transformValue.indexOf(' '));
+    let top = transformValue.slice(transformValue.indexOf(' ') + 1, transformValue.indexOf(')'));
+    var markerValue = left + '-' + top;
+    updateUrl('marker', markerValue);
   };
 
 
@@ -366,5 +397,7 @@
 
     }
   })();
+
+  extractUrl(urlParams);
 
 }(jQuery));
