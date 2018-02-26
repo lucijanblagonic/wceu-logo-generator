@@ -246,12 +246,10 @@
     var $dots = $('.world .dot');
     $dots.each(function() {
       var dataR = $(this).data('r');
-      $(this).css('r', '');
+      $(this).attr('r', dataR);
     });
-    // if(urlParams.has('marker')) {
-      urlParams.delete('marker');
-      window.history.replaceState({}, '', window.location.pathname + '?' + urlParams);
-    // }
+    urlParams.delete('marker');
+    window.history.replaceState({}, '', window.location.pathname + '?' + urlParams);
   };
 
 
@@ -259,7 +257,6 @@
    * Function for creating marker
   */
   function createMarker(e) {
-    console.log(e);
     var transform;
     if (typeof e === 'string') {
       var left = e.slice(0, e.indexOf('-'));
@@ -332,10 +329,11 @@
               topMiddleSibling    = document.querySelector('[transform="translate(' + x + ' ' + ( y - 24 ) + ')"]'),
               topMiddleSiblingFar = document.querySelector('[transform="translate(' + x + ' ' + ( y - 48 ) + ')"]'),
               topRightSibling     = document.querySelector('[transform="translate(' + ( x + 24 ) + ' ' + ( y - 24 ) + ')"]');
-          if( topMiddleSibling ) { topMiddleSibling.style.r = 18; }
-          if( topMiddleSibling && topMiddleSiblingFar ) { topMiddleSiblingFar.style.r = 12; }
-          if( topMiddleSibling && topLeftSibling ) { topLeftSibling.style.r = 12; }
-          if( topMiddleSibling && topRightSibling ) { topRightSibling.style.r = 12; }
+          
+          if( topMiddleSibling ) { topMiddleSibling.setAttribute('r', 18); }
+          if( topMiddleSibling && topMiddleSiblingFar ) { topMiddleSiblingFar.setAttribute('r', 12) }
+          if( topMiddleSibling && topLeftSibling ) { topLeftSibling.setAttribute('r', 12); }
+          if( topMiddleSibling && topRightSibling ) { topRightSibling.setAttribute('r', 12); }
         }
       },
 
@@ -344,8 +342,8 @@
         if( x && y ) {
           var nearSibling = document.querySelector('[transform="translate(' + ( x - 24 ) + ' ' + y + ')"]'),
               farSibling  = document.querySelector('[transform="translate(' + ( x - 48 ) + ' ' + y + ')"]');
-          if( nearSibling ) { nearSibling.style.r = 18; }
-          if( nearSibling && farSibling ) { farSibling.style.r = 12; }
+          if( nearSibling ) { nearSibling.setAttribute('r', 18); }
+          if( nearSibling && farSibling ) { farSibling.setAttribute('r', 12); }
         }
       },
 
@@ -354,8 +352,8 @@
         if( x && y ) {
           var nearSibling = document.querySelector('[transform="translate(' + ( x + 24 ) + ' ' + y + ')"]'),
               farSibling  = document.querySelector('[transform="translate(' + ( x + 48 ) + ' ' + y + ')"]');
-          if( nearSibling ) { nearSibling.style.r = 18; }
-          if( nearSibling && farSibling ) { farSibling.style.r = 12; }
+          if( nearSibling ) { nearSibling.setAttribute('r', 18); }
+          if( nearSibling && farSibling ) { farSibling.setAttribute('r', 12); }
         }
       },
 
@@ -366,10 +364,10 @@
               bottomMiddleSibling    = document.querySelector('[transform="translate(' + x + ' ' + ( y + 24 ) + ')"]'),
               bottomMiddleSiblingFar = document.querySelector('[transform="translate(' + x + ' ' + ( y + 48 ) + ')"]'),
               bottomRightSibling     = document.querySelector('[transform="translate(' + ( x + 24 ) + ' ' + ( y + 24 ) + ')"]');
-          if( bottomMiddleSibling ) { bottomMiddleSibling.style.r = 18; }
-          if( bottomMiddleSibling && bottomMiddleSiblingFar ) { bottomMiddleSiblingFar.style.r = 12; }
-          if( bottomMiddleSibling && bottomLeftSibling ) { bottomLeftSibling.style.r = 12; }
-          if( bottomMiddleSibling && bottomRightSibling ) { bottomRightSibling.style.r = 12; }
+          if( bottomMiddleSibling ) { bottomMiddleSibling.setAttribute('r', 18); }
+          if( bottomMiddleSibling && bottomMiddleSiblingFar ) { bottomMiddleSiblingFar.setAttribute('r', 12); }
+          if( bottomMiddleSibling && bottomLeftSibling ) { bottomLeftSibling.setAttribute('r', 12); }
+          if( bottomMiddleSibling && bottomRightSibling ) { bottomRightSibling.setAttribute('r', 12); }
         }
       },
 
